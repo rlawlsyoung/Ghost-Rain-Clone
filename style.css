@@ -1,0 +1,89 @@
+body {
+  margin: 0px;
+  font-family: "IM Fell English SC", serif;
+  background-image: url(./images/scott-rodgerson-ZLHBjxbCCEc-unsplash.jpg);
+  background-size: cover;
+}
+
+#contents {
+  width: 800px;
+  margin: auto;
+}
+
+#title {
+  font-size: 72px;
+  text-align: center;
+  background-color: black;
+  color: white;
+  padding: 20px 0px 15px;
+}
+
+#tns {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  text-align: center;
+  font-size: 1.4rem;
+  color: white;
+}
+
+.tns-number {
+  margin: 0px;
+  font-size: 1.8rem;
+}
+
+#timer,
+#score {
+  background-color: black;
+  padding: 3px;
+  width: 70px;
+}
+
+#bg {
+  position: relative;
+  width: 800px;
+  height: 500px;
+  margin: 20px auto;
+  background: url("./images/bg.png") no-repeat;
+}
+
+#hero {
+  position: absolute;
+  bottom: 0px;
+  left: 50%;
+
+  width: 35px;
+  height: 54px;
+  background: url("./images/hero.png") no-repeat;
+  background-position: -35px 0px;
+}
+
+#life {
+  text-align: end;
+  font-size: 20px;
+  color: white;
+}
+
+#start {
+  height: 120px;
+  width: 100%;
+  font-size: 40px;
+  margin-top: 30px;
+  font-family: "IM Fell English SC", serif;
+  background-color: black;
+  color: white;
+}
+
+/* // 70 = left, 105 = right */
+
+#hero.stop {
+  background-position: -35px 0px;
+}
+
+#hero.left {
+  background-position: -70px 0px;
+}
+
+#hero.right {
+  background-position: -105px 0px;
+}
