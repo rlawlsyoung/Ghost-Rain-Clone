@@ -12,9 +12,9 @@ const HERO_HEIGHT = 54;
 // DOM 지정
 
 const bg = document.getElementById("bg");
-const heroElement = document.getElementById("hero");
 
 const scoreDisplay = document.querySelector(".score");
+const timerDisplay = document.querySelector(".timer");
 const lifeDisplay = document.querySelector("#life");
 const start = document.querySelector("#start");
 
@@ -22,3 +22,12 @@ const start = document.querySelector("#start");
 
 let score = 0;
 let life = 5;
+let isGameOver = true;
+let timer = 30;
+let initCount = 0;
+
+// 범위 내의 랜덤 값
+
+function randomRange(min, max) {
+  return Math.floor(Math.random() * (max + 1 - min)) + min;
+}
