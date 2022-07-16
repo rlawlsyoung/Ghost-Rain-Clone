@@ -1,3 +1,5 @@
+//이미지 파일 크기값
+
 const BG_WIDTH = 800;
 const BG_HEIGHT = 500;
 
@@ -7,26 +9,16 @@ const GHOST_HEIGHT = 54;
 const HERO_WIDTH = 35;
 const HERO_HEIGHT = 54;
 
-//
+// DOM 지정
 
-let score = 0;
-let life = 5;
-
-const heroElement = document.querySelector("#hero");
-const bgElement = document.querySelector("#bg");
-const start = document.querySelector("#start");
+const bg = document.getElementById("bg");
+const heroElement = document.getElementById("hero");
 
 const scoreDisplay = document.querySelector(".score");
 const lifeDisplay = document.querySelector("#life");
+const start = document.querySelector("#start");
 
-// top값을 숫자로 가져오는 함수
-function justTopNum(element) {
-  const elementTop = getComputedStyle(element).top;
-  return parseInt(elementTop);
-}
+// 기타
 
-// left값을 숫자로 가져오는 함수
-function justLeftNum(element) {
-  const elementLeft = getComputedStyle(element).left;
-  return parseInt(elementLeft);
-}
+let score = 0;
+let life = 5;

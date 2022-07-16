@@ -1,24 +1,46 @@
-document.addEventListener("keydown", function (e) {
-  //getComputedStyle은 heroElement의 인라인 태그 (div id=hero) 를 살펴보면, left값이 없기 때문에 DOM에서 CSS값을 가져오려고 사용하는 것이다.
-  const heroLeft = getComputedStyle(heroElement).left;
+// init함수는 keydown된 값을 checkKey로 전달하고, 2000ms에 한번씩 create함수를 실행함
+function init() {
+  heroElement.style.display = "inline-block";
+  document.addEventListener("keydown", function (e) {
+    checkKey(e, true);
+  });
 
-  //split은 문자 변수에서 쓸 수 있는데, 여기선 "px"를 기준으로 나누고 배열을 만듦.
-  //Number()은 문자열을 숫자로 변환해줌
-  const heroLeftWithoutPx = Number(heroLeft.split("px")[0]);
+  document.addEventListener(
+    "keyup",
+    function (e) {
+      checkKey(e, false);
+    },
+    false
+  );
 
-  if (e.keyCode === 37 && heroLeftWithoutPx > 0) {
-    // 왼쪽 키 코드 = 37
-    heroElement.className = "left";
+  setInterval(function () {
+    create();
+  }, 2000);
+}
 
-    heroElement.style.left = heroLeftWithoutPx - 5 + "px";
-  } else if (e.keyCode === 39 && heroLeftWithoutPx < BG_WIDTH - HERO_WIDTH) {
-    // 오른쪽 키 코드 = 39
-    heroElement.className = "right";
+function checkKey(e, isMoving) {
+  if (isMoving) {
+    //keyCode와 which 모두 키 코드
+    const keyID = e.keyCode || e.which;
 
-    heroElement.style.left = heroLeftWithoutPx + 5 + "px";
+    switch (keyID) {
+      case 39: //right
+        heroElement.className = "right";
+        // setLeft는 인자값만큼 영웅을 이동시키는 함수
+        setLeft(10);
+        // preventDefault를 넣어줌으로써, 좌 우 방향키를 눌러도 페이지가 이동하지 않음
+        e.preventDefault();
+        break;
+      case 37: //left
+        heroElement.className = "left";
+        setLeft(-10);
+        e.preventDefault();
+        break;
+    }
+  } else {
+    heroElement.className = "stop";
   }
-});
+}
 
-document.addEventListener("keyup", function (e) {
-  heroElement.className = "stop";
-});
+heroElement.style.display = "none";
+start.addEventListener("click", init);
